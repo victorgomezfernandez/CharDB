@@ -1,12 +1,23 @@
 package com.charcc.project.charcc.models;
 
-public class stats {
+import jakarta.persistence.*;
+
+@Entity
+@Table (name = "stats")
+public class Stats {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private int strength;
     private int dexterity;
     private int constitution;
     private int intelligence;
     private int wisdom;
     private int charisma;
+
+    public Long getId() {
+        return id;
+    }
 
     public int getStrength() {
         return strength;
@@ -30,6 +41,10 @@ public class stats {
 
     public int getCharisma() {
         return charisma;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setStrength(int strength) {
@@ -56,6 +71,6 @@ public class stats {
         this.charisma = charisma;
     }
 
-    public stats() {
+    public Stats() {
     }
 }

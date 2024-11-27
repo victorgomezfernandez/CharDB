@@ -1,11 +1,17 @@
 package com.charcc.project.charcc.models;
 
-public class proficiency {
-    private long id;
+import jakarta.persistence.*;
+
+@Entity
+@Table (name = "proficiency")
+public class Proficiency {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String description;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -17,7 +23,7 @@ public class proficiency {
         return description;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -29,6 +35,6 @@ public class proficiency {
         this.description = description;
     }
 
-    public proficiency() {
+    public Proficiency() {
     }
 }

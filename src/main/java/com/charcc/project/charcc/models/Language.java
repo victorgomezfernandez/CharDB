@@ -1,10 +1,16 @@
 package com.charcc.project.charcc.models;
 
-public class language {
-    private long id;
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "language")
+public class Language {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
     private String language;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -12,7 +18,7 @@ public class language {
         return language;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -20,7 +26,7 @@ public class language {
         this.language = language;
     }
 
-    public language() {
+    public Language() {
 
     }
 }
