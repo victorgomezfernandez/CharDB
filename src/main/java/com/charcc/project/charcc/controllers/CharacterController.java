@@ -5,11 +5,12 @@ import com.charcc.project.charcc.repositories.CharacterRepository;
 import com.charcc.project.charcc.models.Character;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.charcc.project.charcc.ResourceNotFoundException;
 
 import java.util.List;
 @CrossOrigin(origins = "*") // Permite solicitudes desde Ionic
 @RestController
-@RequestMapping("/api/charcc")
+@RequestMapping("/api/charcc/characters")
 public class CharacterController {
     @Autowired
     private CharacterRepository characterRepository;
@@ -26,6 +27,19 @@ public class CharacterController {
 
     @GetMapping("/{id}")
     public Character getCharacterById(@PathVariable ("id") Long id) {
-        return characterRepository.findById(id);
+        return characterRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Character not found"));
+    }
+
+    @PutMapping("{/id}")
+    public Character putCharacter(@PathVariable ("id") Long id, @RequestBody Character charcc_character) {
+        Character character = characterRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Character not found"));
+        return characterRepository.save(charcc_character);
+    }
+
+    @DeleteMapping("/{id}")
+    public Character deleteCharacter(@PathVariable ("id") Long id) {
+        Character character = characterRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Character not found"));
+        characterRepository.deleteById(id);
+        return character;
     }
 }
