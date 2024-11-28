@@ -30,10 +30,10 @@ public class CharacterController {
         return characterRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Character not found"));
     }
 
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public Character putCharacter(@PathVariable ("id") Long id, @RequestBody Character charcc_character) {
         Character character = characterRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Character not found"));
-        return characterRepository.save(charcc_character);
+        return characterRepository.save(character);
     }
 
     @DeleteMapping("/{id}")
