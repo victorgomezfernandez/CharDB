@@ -14,6 +14,7 @@ public class Stats {
     private int intelligence;
     private int wisdom;
     private int charisma;
+    public long character_id;
 
     public Long getId() {
         return id;
@@ -43,6 +44,8 @@ public class Stats {
         return charisma;
     }
 
+    public long getCharacter_id() { return character_id; }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -70,6 +73,8 @@ public class Stats {
     public void setCharisma(int charisma) {
         this.charisma = charisma;
     }
+
+    public void setCharacter_id(long character_id) { this.character_id = character_id; }
 
     public Stats() {
     }

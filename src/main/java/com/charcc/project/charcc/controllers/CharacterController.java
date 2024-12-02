@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.charcc.project.charcc.ResourceNotFoundException;
 
 import java.util.List;
-@CrossOrigin(origins = "*") // Permite solicitudes desde Ionic
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/charcc/characters")
 public class CharacterController {
@@ -33,6 +33,7 @@ public class CharacterController {
     @PutMapping("/{id}")
     public Character putCharacter(@PathVariable ("id") Long id, @RequestBody Character charcc_character) {
         Character character = characterRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Character not found"));
+        character.setId(charcc_character.getId());
         return characterRepository.save(character);
     }
 

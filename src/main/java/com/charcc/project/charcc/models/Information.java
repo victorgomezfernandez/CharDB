@@ -19,6 +19,7 @@ public class Information {
     private String flaws;
     private String bonds;
     private String backstory;
+    private long character_id;
 
     public Long getId() {
         return id;
@@ -36,17 +37,13 @@ public class Information {
         return level;
     }
 
-    public String getCharClass() {
-        return charClass;
-    }
+    public String getCharClass() { return charClass; }
 
     public String getRace() {
         return race;
     }
 
-    public String getFactions() {
-        return factions;
-    }
+    public String getFactions() { return factions; }
 
     public String getTraits() {
         return traits;
@@ -56,9 +53,7 @@ public class Information {
         return ideals;
     }
 
-    public String getFlaws() {
-        return flaws;
-    }
+    public String getFlaws() { return flaws; }
 
     public String getBonds() {
         return bonds;
@@ -67,6 +62,8 @@ public class Information {
     public String getBackstory() {
         return backstory;
     }
+
+    public long getCharacter_id() { return character_id; }
 
     public void setId(Long id) {
         this.id = id;
@@ -92,9 +89,7 @@ public class Information {
         this.race = race;
     }
 
-    public void setFactions(String factions) {
-        this.factions = factions;
-    }
+    public void setFactions(String factions) { this.factions = factions; }
 
     public void setTraits(String traits) {
         this.traits = traits;
@@ -115,6 +110,8 @@ public class Information {
     public void setBackstory(String backstory) {
         this.backstory = backstory;
     }
+
+    public void setCharacter_id(long character_id) { this.character_id = character_id; }
 
     public Information() {
     }
