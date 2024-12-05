@@ -38,7 +38,6 @@ public class StatsController {
         stats.setIntelligence(charcc_stats.getIntelligence());
         stats.setWisdom(charcc_stats.getWisdom());
         stats.setCharisma(charcc_stats.getCharisma());
-        stats.setCharacter_id(charcc_stats.getCharacter_id());
         return statsRepository.save(stats);
     }
 
@@ -47,5 +46,9 @@ public class StatsController {
         Stats stats = statsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Stats not found"));
         statsRepository.delete(stats);
         return stats;
+    }
+
+    public List<Stats> getStatsByCharacterId(Long characterId) {
+        return statsRepository.findByCharacterId(characterId);
     }
 }

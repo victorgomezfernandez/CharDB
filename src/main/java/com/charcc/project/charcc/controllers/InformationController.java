@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import com.charcc.project.charcc.ResourceNotFoundException;
 import java.util.List;
 
-@CrossOrigin(origins = "*") // Permite solicitudes desde Ionic
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/charcc/informations")
 public class InformationController {
@@ -43,7 +43,6 @@ public class InformationController {
         information.setFlaws(chacc_information.getFlaws());
         information.setBonds(chacc_information.getBonds());
         information.setBackstory(chacc_information.getBackstory());
-        information.setCharacter_id(chacc_information.getCharacter_id());
         return informationRepository.save(information);
     }
 

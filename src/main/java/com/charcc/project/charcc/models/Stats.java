@@ -3,18 +3,22 @@ package com.charcc.project.charcc.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table (name = "stats")
+@Table(name = "stats")
 public class Stats {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private int strength;
     private int dexterity;
     private int constitution;
     private int intelligence;
     private int wisdom;
     private int charisma;
-    public long character_id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "character_id", unique = true, nullable = false)
+    private Character character;
 
     public Long getId() {
         return id;
@@ -44,7 +48,9 @@ public class Stats {
         return charisma;
     }
 
-    public long getCharacter_id() { return character_id; }
+    public Character getCharacter() {
+        return character;
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -74,7 +80,9 @@ public class Stats {
         this.charisma = charisma;
     }
 
-    public void setCharacter_id(long character_id) { this.character_id = character_id; }
+    public void setCharacter(Character character) {
+        this.character = character;
+    }
 
     public Stats() {
     }
