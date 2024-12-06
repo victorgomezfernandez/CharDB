@@ -1,6 +1,8 @@
 package com.charcc.project.charcc.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "information")
@@ -22,9 +24,10 @@ public class Information {
     private String bonds;
     private String backstory;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "character_id", unique = true, nullable = false)
-    private Character character;  // Relación con la entidad Character
+    @JsonManagedReference
+    private Character character;
 
     public Long getId() {
         return id;
