@@ -1,9 +1,9 @@
 package com.charcc.project.charcc.controllers;
 
 import com.charcc.project.charcc.repositories.InformationRepository;
-import com.charcc.project.charcc.repositories.CharacterRepository;  // Importa el repositorio de Character
+import com.charcc.project.charcc.repositories.CharacterRepository;
 import com.charcc.project.charcc.models.Information;
-import com.charcc.project.charcc.models.Character;  // Importa la clase Character
+import com.charcc.project.charcc.models.Character;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.charcc.project.charcc.ResourceNotFoundException;
@@ -19,7 +19,7 @@ public class InformationController {
     private InformationRepository informationRepository;
 
     @Autowired
-    private CharacterRepository characterRepository; // Inyecta el repositorio de Character
+    private CharacterRepository characterRepository;
 
     @GetMapping
     public List<Information> findAll() {
@@ -55,12 +55,10 @@ public class InformationController {
         Information information = informationRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Information not found"));
 
-        // Obtener el Character por su ID y asignarlo a la Information
         Character character = characterRepository.findById(chacc_information.getCharacter().getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Character not found"));
-        information.setCharacter(character);  // Asociar el Character
+        information.setCharacter(character);
 
-        // Actualizar los demás campos de Information
         information.setName(chacc_information.getName());
         information.setAge(chacc_information.getAge());
         information.setLevel(chacc_information.getLevel());
@@ -73,7 +71,6 @@ public class InformationController {
         information.setBonds(chacc_information.getBonds());
         information.setBackstory(chacc_information.getBackstory());
 
-        // Guardar la entidad actualizada
         return informationRepository.save(information);
     }
 

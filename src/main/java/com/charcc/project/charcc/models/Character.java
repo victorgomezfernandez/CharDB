@@ -18,8 +18,6 @@ public class Character {
     public Character() {
     }
 
-    // Getters y Setters
-
     public Long getId() {
         return id;
     }
