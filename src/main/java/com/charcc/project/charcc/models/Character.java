@@ -12,8 +12,18 @@ public class Character {
     private Long id;
 
     @OneToOne(mappedBy = "character", fetch = FetchType.EAGER)
-    @JsonBackReference // Esta anotación evita la recursión infinita desde el lado "principal"
+    @JsonBackReference
     private Information information;
+
+    //Bucle infinito
+    @OneToOne(mappedBy = "character", fetch = FetchType.EAGER)
+    private Stats stats;
+
+    //No bucle infinito pero no inserta personaje
+    /*@OneToOne(mappedBy = "character", fetch = FetchType.EAGER)
+    @JsonBackReference
+    private Stats stats;*/
+
 
     public Character() {
     }
@@ -32,5 +42,13 @@ public class Character {
 
     public void setInformation(Information information) {
         this.information = information;
+    }
+
+    public Stats getStats() {
+        return stats;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
     }
 }

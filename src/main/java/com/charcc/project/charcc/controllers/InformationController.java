@@ -29,14 +29,6 @@ public class InformationController {
     @PostMapping
     public Information putInformation(@RequestBody Information information) {
         try {
-            if (information.getCharacter() != null && information.getCharacter().getId() != null) {
-                Character character = characterRepository.findById(information.getCharacter().getId())
-                        .orElseThrow(() -> new ResourceNotFoundException("Character not found"));
-                information.setCharacter(character);
-            } else {
-                throw new IllegalArgumentException("Character ID must be provided");
-            }
-
             return informationRepository.save(information);
         } catch (Exception e) {
             throw new RuntimeException("Error al guardar la información", e);
@@ -70,7 +62,7 @@ public class InformationController {
         information.setFlaws(chacc_information.getFlaws());
         information.setBonds(chacc_information.getBonds());
         information.setBackstory(chacc_information.getBackstory());
-
+        information.setCharacter(chacc_information.getCharacter());
         return informationRepository.save(information);
     }
 

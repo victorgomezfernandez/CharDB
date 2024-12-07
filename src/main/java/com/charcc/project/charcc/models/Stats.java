@@ -1,5 +1,6 @@
 package com.charcc.project.charcc.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,9 +17,16 @@ public class Stats {
     private int wisdom;
     private int charisma;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    //Llega a bucle infinito
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "character_id", unique = true, nullable = false)
     private Character character;
+
+    //No bucle infinito pero no inserta personaje
+    /*@OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "character_id", unique = true, nullable = false)
+    @JsonManagedReference
+    private Character character;*/
 
     public Long getId() {
         return id;
