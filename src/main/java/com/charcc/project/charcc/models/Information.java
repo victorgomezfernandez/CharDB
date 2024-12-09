@@ -76,6 +76,10 @@ public class Information {
         return backstory;
     }
 
+    public Stats getStats() {
+        return stats;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -122,6 +126,10 @@ public class Information {
 
     public void setBackstory(String backstory) {
         this.backstory = backstory;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
     }
 
     public Information() {

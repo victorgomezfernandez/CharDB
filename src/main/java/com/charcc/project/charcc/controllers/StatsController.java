@@ -38,6 +38,7 @@ public class StatsController {
         stats.setIntelligence(charcc_stats.getIntelligence());
         stats.setWisdom(charcc_stats.getWisdom());
         stats.setCharisma(charcc_stats.getCharisma());
+        stats.setInformation(charcc_stats.getInformation());
         return statsRepository.save(stats);
     }
 
