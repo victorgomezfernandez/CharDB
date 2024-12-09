@@ -1,5 +1,6 @@
 package com.charcc.project.charcc.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -17,16 +18,10 @@ public class Stats {
     private int wisdom;
     private int charisma;
 
-    //Llega a bucle infinito
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "character_id", unique = true, nullable = false)
-    private Character character;
-
-    //No bucle infinito pero no inserta personaje
-    /*@OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "character_id", unique = true, nullable = false)
-    @JsonManagedReference
-    private Character character;*/
+    @JoinColumn(name = "information_id", unique = true, nullable = false)
+    @JsonBackReference
+    private Information information;
 
     public Long getId() {
         return id;
@@ -56,8 +51,8 @@ public class Stats {
         return charisma;
     }
 
-    public Character getCharacter() {
-        return character;
+    public Information getInformation() {
+        return information;
     }
 
     public void setId(Long id) {
@@ -88,8 +83,8 @@ public class Stats {
         this.charisma = charisma;
     }
 
-    public void setCharacter(Character character) {
-        this.character = character;
+    public void setInformation(Information information) {
+        this.information = information;
     }
 
     public Stats() {

@@ -48,7 +48,4 @@ public class StatsController {
         return stats;
     }
 
-    public List<Stats> getStatsByCharacterId(Long characterId) {
-        return statsRepository.findByCharacterId(characterId);
-    }
 }

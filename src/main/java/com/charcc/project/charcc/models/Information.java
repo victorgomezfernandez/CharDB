@@ -24,10 +24,9 @@ public class Information {
     private String bonds;
     private String backstory;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "character_id", unique = true, nullable = false)
+    @OneToOne(mappedBy = "information", fetch = FetchType.EAGER)
     @JsonManagedReference
-    private Character character;
+    private Stats stats;
 
     public Long getId() {
         return id;
@@ -77,10 +76,6 @@ public class Information {
         return backstory;
     }
 
-    public Character getCharacter() {
-        return character;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -127,10 +122,6 @@ public class Information {
 
     public void setBackstory(String backstory) {
         this.backstory = backstory;
-    }
-
-    public void setCharacter(Character character) {
-        this.character = character;
     }
 
     public Information() {
