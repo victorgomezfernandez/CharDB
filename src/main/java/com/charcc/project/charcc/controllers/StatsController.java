@@ -6,6 +6,7 @@ import com.charcc.project.charcc.models.Stats;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.charcc.project.charcc.ResourceNotFoundException;
 import java.util.List;
@@ -36,6 +37,12 @@ public class StatsController {
     public Stats getStatsById(@PathVariable Long id) {
         return statsRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Stats not found"));
+    }
+
+    @GetMapping("/information/{informationId}")
+    public ResponseEntity<Stats> getStatsByInformationId(@PathVariable Long informationId) {
+        Stats stats = statsRepository.findByInformationId(informationId);
+        return ResponseEntity.ok(stats);
     }
 
     @PutMapping("/{id}")
