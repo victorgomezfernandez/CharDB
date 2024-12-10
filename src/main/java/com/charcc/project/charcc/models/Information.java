@@ -24,7 +24,7 @@ public class Information {
     private String bonds;
     private String backstory;
 
-    @OneToOne(mappedBy = "information", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "information", fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     @JsonManagedReference
     private Stats stats;
 

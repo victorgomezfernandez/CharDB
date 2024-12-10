@@ -29,7 +29,6 @@ public class StatsController {
     @PostMapping
     @Transactional
     public Stats saveStats(@RequestBody Stats stats) {
-        stats.setInformation(entityManager.merge(stats.getInformation()));
         return statsRepository.save(stats);
     }
 
