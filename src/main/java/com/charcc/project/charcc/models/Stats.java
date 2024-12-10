@@ -18,7 +18,7 @@ public class Stats {
     private int wisdom;
     private int charisma;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "information_id", unique = true, nullable = false)
     @JsonBackReference
     private Information information;
