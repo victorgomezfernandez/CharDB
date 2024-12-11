@@ -1,6 +1,5 @@
 package com.charcc.project.charcc.controllers;
 
-import com.charcc.project.charcc.models.Information;
 import com.charcc.project.charcc.repositories.StatsRepository;
 import com.charcc.project.charcc.models.Stats;
 import jakarta.persistence.EntityManager;
@@ -50,18 +49,12 @@ public class StatsController {
     public Stats putStats(@PathVariable("id") Long id, @RequestBody Stats charcc_stats) {
         Stats stats = statsRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Stats not found"));
-
         stats.setStrength(charcc_stats.getStrength());
         stats.setDexterity(charcc_stats.getDexterity());
         stats.setConstitution(charcc_stats.getConstitution());
         stats.setIntelligence(charcc_stats.getIntelligence());
         stats.setWisdom(charcc_stats.getWisdom());
         stats.setCharisma(charcc_stats.getCharisma());
-
-        if (charcc_stats.getInformation() != null) {
-            stats.setInformation(entityManager.merge(charcc_stats.getInformation()));
-        }
-
         return statsRepository.save(stats);
     }
 
